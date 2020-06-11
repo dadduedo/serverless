@@ -1,0 +1,17 @@
+| Type: #{raw.sourceType}
+| Phone number: #{raw.phoneNumber}
+if raw.sourceType === 'funnel'
+    |
+    | --
+    | Zip code: #{raw.zipCode}
+    | Province: #{raw.city}
+    | --
+
+    each key in Object.keys(raw.answers)
+        |
+        | #{key}
+        | #{raw.answers[key]}
+        | --
+
+|
+| Identifier: #{id}

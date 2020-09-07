@@ -1,15 +1,12 @@
 | Informacion del usuario:
 | Nombre: #{raw.origin}
-|
 if raw.sourceType !== 'funnel'
     | Apellido1:
     | Apellido2:
     | Direccion:
     | Localidad:
     | CP:#{raw.outOfAreaInfo.zipCode !== null ? ' '+raw.outOfAreaInfo.zipCode : ''}
-    |
     | Telefono1:#{raw.phoneNumber !== null ? ' '+raw.phoneNumber : ''}
-    |
     | Telefono2:
     | sdemail1: italia@italia.com
     | sdemail2:
@@ -22,24 +19,16 @@ if raw.sourceType !== 'funnel'
     | sdIdPais: 2
     | Fecha y hora:
     | idUnico: #{raw.consolidationKey}
-    |
     | Npayback:
 else
     | Apellido2:
     | CP:#{raw.outOfAreaInfo.zipCode !== null ? ' '+raw.outOfAreaInfo.zipCode : ''}
-    |
     | Telefono1:#{raw.phoneNumber !== null ? ' ' + raw.phoneNumber : ''}
-    |
     | sdOrigen: #{raw.origin+'_calcola'}
-    |
     | sdIdPais: 2
     | idUnico: #{raw.consolidationKey}
-    |
     | Questionario1:#{raw.hasOwnProperty('answers') ? [' CAP = ', raw.zipCode, ' | ', 'Tipo = ', raw.funnel.name].join('') : ''}#{Object.keys(raw.answers || {}).map(key => ` | ${key} = ${raw.answers[key]}`).join('')}
-|
 | ClientID:#{raw.hasOwnProperty('clientIdentity') && raw.clientIdentity.hasOwnProperty('clientId') ? ' '+raw.clientIdentity.clientId : ''}
-|
 | Provincia:#{raw.hasOwnProperty('outOfAreaInfo') && raw.outOfAreaInfo.hasOwnProperty('city') && raw.outOfAreaInfo.city ? ' '+raw.outOfAreaInfo.city : ''}
-|
 | isOutOfArea: No
 | Fine:

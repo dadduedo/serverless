@@ -8,25 +8,18 @@ const nodemailer = require('nodemailer');
 app.use(bodyParser.json());
 
 const EmailTemplate = require('email-templates');
-const email = new EmailTemplate({
-    views: {
-        root: path.join(__dirname, '..', 'tpl')
-    },
-    message: {
-        from: process.env.EMAIL_FROM
-    },
+ const email = new EmailTemplate({
+    views: {root: path.join(__dirname, '..', 'tpl')},
+    message: {from: process.env.EMAIL_FROM},
     transport: nodemailer.createTransport(process.env.SMTP_CONFIGURATION),
     send: true,
     preview: false,
 });
 
 app.post('/send', (req, res) => {
-    email
-        .send({
+     email.send({
             template: req.headers.scope,
-            message: {
-                to: req.headers['email-to']
-            },
+            message: {to: req.headers['email-to']},
             locals: req.body
         })
         .then(data => res.json(data))
@@ -40,5 +33,4 @@ app.post('/send', (req, res) => {
             res.status(500).json(err)
         });
 });
-
 module.exports.app = serverless(app);

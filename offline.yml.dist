@@ -1,3 +1,0 @@
-ssm:
-    /transmitter/service/smtp/email/FROM:
-    /transmitter/service/smtp/SMTP_CONFIGURATION: "smtp://username:password@smtp.mandrillapp.com?authMethod=login"

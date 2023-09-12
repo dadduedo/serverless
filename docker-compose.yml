@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  smtp:
+    image: "mailhog/mailhog"
+    ports:
+      - "704:1025"
+      - "705:8025"
+    networks:
+      - verisure
+  app:
+    container_name: transmitter-smtp-service
+    image: node:18-alpine
+    volumes:
+      - ./src:/projects
+    working_dir: /projects
+    restart: always
+    networks:
+      - internal
+      - verisure
+    ports:
+      - "727:3000"
+    command:
+      - npm
+      - run
+      - dev
+networks:
+  verisure:
+    name: verisure
+    external: true
+  internal:

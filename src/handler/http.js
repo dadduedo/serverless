@@ -17,6 +17,7 @@ const EmailTemplate = require('email-templates');
 });
 
 app.post('/send', (req, res) => {
+    //send mail
      email.send({
             template: req.headers.scope,
             message: {to: req.headers['email-to']},

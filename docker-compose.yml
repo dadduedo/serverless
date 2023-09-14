@@ -19,10 +19,7 @@ services:
       - verisure
     ports:
       - "727:3000"
-    command:
-      - npm
-      - run
-      - dev
+    command: sh -c "npm install && npm run dev"
 networks:
   verisure:
     name: verisure

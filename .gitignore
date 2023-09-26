@@ -1,6 +1,6 @@
 # package directories
 node_modules
 .idea
+src/offline.yml
 # Serverless directories
 .serverless
-src/offline.yml
